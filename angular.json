@@ -37,9 +37,18 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "src/assets/lib/anychart-ui.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/lib/anychart-bundle.min.js",
+              "src/assets/lib/anychart-ui-binding.min.js",
+              "src/assets/lib/anychart-core.min.js",
+              "src/assets/lib/anychart-base.min.js",
+              "src/assets/lib/anychart-map.min.js",
+              "src/assets/lib/saudi_arabia.js",
+              "src/assets/lib/proj4.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -97,9 +106,18 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "src/assets/lib/anychart-ui.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/lib/anychart-bundle.min.js",
+              "src/assets/lib/anychart-ui-binding.min.js",
+              "src/assets/lib/anychart-core.min.js",
+              "src/assets/lib/anychart-base.min.js",
+              "src/assets/lib/anychart-map.min.js",
+              "src/assets/lib/saudi_arabia.js",
+              "src/assets/lib/proj4.js"
+            ]
           }
         }
       }
