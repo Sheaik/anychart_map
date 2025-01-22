@@ -1,4 +1,19 @@
-#container{
-    height: 500px;
-    width: 1000px;
+
+.map-class{
+    #container{
+        height: 500px;
+        width: 100%;
+    }
+    
+    .zoom-icon-control {
+        background: #1E2138;
+        height: 25px;
+        width: 25px;
+        border-radius: 4px;
+        i {
+            font-size: 12px;
+            color: #E7E7E8;
+        }
+    }
 }
+

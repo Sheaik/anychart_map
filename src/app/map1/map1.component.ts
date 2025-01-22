@@ -239,6 +239,7 @@ export class Map1Component implements OnInit {
       this.map.container('container');
 
       this.map.geoData(anychart.maps['saudi_arabia']);
+      anychart.graphics.updateReferences();
       this.map.draw();
     }
   }

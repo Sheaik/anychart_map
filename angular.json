@@ -37,6 +37,9 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
+              "node_modules/primeng/resources/primeng.min.css",
+              "node_modules/primeflex/primeflex.css",
               "src/styles.scss",
               "src/assets/lib/anychart-ui.min.css"
             ],
@@ -47,6 +50,7 @@
               "src/assets/lib/anychart-base.min.js",
               "src/assets/lib/anychart-map.min.js",
               "src/assets/lib/saudi_arabia.js",
+              "src/assets/lib/world.js",
               "src/assets/lib/proj4.js"
             ]
           },
@@ -106,6 +110,9 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
+              "node_modules/primeng/resources/primeng.min.css",
+              "node_modules/primeflex/primeflex.css",
               "src/styles.scss",
               "src/assets/lib/anychart-ui.min.css"
             ],
@@ -116,6 +123,7 @@
               "src/assets/lib/anychart-base.min.js",
               "src/assets/lib/anychart-map.min.js",
               "src/assets/lib/saudi_arabia.js",
+              "src/assets/lib/world.js",
               "src/assets/lib/proj4.js"
             ]
           }

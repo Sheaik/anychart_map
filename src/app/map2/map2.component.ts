@@ -10,7 +10,7 @@ declare var anychart: any;
   styleUrl: './map2.component.scss'
 })
 export class Map2Component implements OnInit {
-regionData: any;
+  regionData: any;
 
   map: any;
 
@@ -47,14 +47,14 @@ regionData: any;
   overLappingMarker: {name: string; lat: number; long: number; fullName: string}[]  = [
     {
       name: 'overlapping1',
-      lat: 21.4241,
+      lat: 27.4241,
       long: 39.8173,
       fullName: 'Overlapping1',
     },
     {
       name: 'overlapping2',
-      lat: 21.7241,
-      long: 39.8173,
+      lat: 22.7241,
+      long: 42.8173,
       fullName: 'Overlapping2',
     }
   ];
@@ -70,6 +70,7 @@ regionData: any;
   }
 
   private initializeChart(): void {
+    
     this.mapDocument.getElementById('container')!.textContent = '';
     this.regionData = anychart.data.set([
       {
@@ -148,8 +149,21 @@ regionData: any;
     this.series = this.map.choropleth(this.regionData);
     this.series.geoIdField('id');
 
-    this.series.hovered().stroke('#235980');
-    this.series.hovered().fill('transparent');
+
+    this.series.normal().stroke('#5B5F74');
+    this.series.normal().fill(function (this: any) {
+      return this.sourceColor;
+    });
+
+    this.series.hovered().stroke('#5B5F74');
+    this.series.hovered().fill(function (this: any) {
+      return this.sourceColor;
+    });
+
+    this.series.selected().stroke('#5B5F74');
+    this.series.selected().fill(function (this: any) {
+      return this.sourceColor;
+    });
 
     var labels = this.series.labels();
     labels.fontColor('#AAAAAA');
@@ -269,7 +283,37 @@ regionData: any;
     this.overlappingSeriesMarker.hovered().stroke(0);
     this.overlappingSeriesMarker.hovered().type('square');
 
+    this.overlappingSeriesMarker.selected().fill({
+      src: 'assets/marker.png',
+      mode: 'fit',
+    });
+    this.overlappingSeriesMarker.selected().size(8);
+    this.overlappingSeriesMarker.selected().stroke(0);
+    this.overlappingSeriesMarker.selected().type('square');
+
     this.overlappingSeriesMarker.labels().fontSize(12).fontColor("#fff").background('#6667755c');
+
+
+    this.overlappingSeriesMarker.listen("pointClick",(e: any)=> {
+      const point = e.point;
+      const name = point.get('name');
+      this.overLappingMarker = this.overLappingMarker.map((data:any) => {
+        return {
+          ...data,
+          name: name == 'Marker Clicked' ? 'overlapping' : 'Marker Clicked'
+        }
+      })
+      e?.preventDefault();
+      this.overlappingSeriesMarker.normal().fill({
+        src: 'assets/marker.png',
+        mode: 'fit',
+      });
+      this.overlappingSeriesMarker.size(10);
+      this.overlappingSeriesMarker.stroke(0);
+      this.overlappingSeriesMarker.type('square');
+
+      this.initializeChart();
+    });
     
 
     var tooltip = this.series.tooltip();
@@ -282,7 +326,23 @@ regionData: any;
       this.map.container('container');
 
       this.map.geoData(anychart.maps['saudi_arabia']);
+      anychart.graphics.updateReferences();
       this.map.draw();
     }
   }
+
+  mapZoom = 1;
+
+  zoom(val: string) {
+    if (val == 'in') {
+      this.mapZoom = Math.min(this.mapZoom + 1, 10);
+      this.map.zoomTo(this.mapZoom);
+    } else if (val == 'out') {
+      this.mapZoom = Math.max(this.mapZoom - 1, 1);
+      this.map.zoomTo(this.mapZoom);
+    } else {
+      this.mapZoom = 1;
+      this.map.zoomTo(this.mapZoom);
+    }
+  } 
 }

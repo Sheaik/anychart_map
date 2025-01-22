@@ -1,1 +1,14 @@
-<div id="container"></div>
+
+<div class="flex flex-column justify-content-center my-4 relative map-class">
+    <div id="container"></div>
+    <div class="zoom-controls mx-2 flex flex-column"
+    style="position: absolute; bottom: 8%; right: 27%;">
+    <span
+        class="zoom-icon-control p-1 cursor-pointer flex align-items-center justify-content-center"
+        [title]="'Zoom-in'" (click)="zoom('in')"><i class="pi pi-plus"></i></span>
+    <span class="zoom-icon-control p-1 my-2 cursor-pointer flex align-items-center justify-content-center" [title]="'Zoom-out'" (click)="zoom('out')"><i
+            class="pi pi-minus"></i></span>
+    <span class="zoom-icon-control p-1 cursor-pointer flex align-items-center justify-content-center" [title]="'Reset'"  (click)="zoom('reset')"><i
+            class="pi pi-sync"></i></span>
+    </div>
+</div>
